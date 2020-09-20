@@ -1,0 +1,14 @@
+#importing the dataset.
+data<-read.csv("archive/AB_NYC_2019.csv")
+
+#converting the date fields into date formats and replacing the empty fields with NA.
+data$last_review<-as.Date(data$last_review)
+
+#removing the rows having NA in column reviews_month
+#creating new temp vector.
+temp<-which(is.na(data$reviews_per_month))
+data<-data[-temp,]
+
+write.csv(data,"tidy_data.csv")
+  
+
